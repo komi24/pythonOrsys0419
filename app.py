@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from models import db
 from models.users import User
-
+import os
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///ge.sqlite3"
@@ -39,7 +39,12 @@ def update(id):
                 "update.html", 
                 user=user)
     
-    
+    User.query.filter(User.id == id).update({
+            "nom": request.form.get("nom"),
+            "email": request.form.get("email")
+            })
+    db.session.commit()
+    return redirect("/")
 
 @app.route('/mon_form', methods=["POST"])
 def form():

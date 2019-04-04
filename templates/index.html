@@ -15,7 +15,8 @@
   {% for pers in liste %}
       <li>
           {{pers.nom}} -- {{pers.email}} 
-          <a href="/profile/{{pers.id}}">voir profil</a>
+          <a class="btn btn-primary" href="/profile/{{pers.id}}">voir profil</a>
+          <a class="btn btn-warning" href="/update/{{pers.id}}">modifier</a>
       </li>
   {% endfor %}
   </ul>

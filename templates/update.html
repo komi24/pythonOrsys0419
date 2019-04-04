@@ -3,13 +3,42 @@
 <head>
   <meta charset="utf-8">
   <title>Titre de la page</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 <body>
+
+    <div id="app">
+    {% raw %}
+
+        {{ message }}
+        <button class="btn btn-primary" @click="dire_bonjour()">Dire Bonjour</button>
+
+    {% endraw %}
+    </div>
+    
+    <script>
+        var app = new Vue({
+          el: '#app',
+          data: {
+            message: 'Hello Vue!',
+          },
+          methods : {
+              dire_bonjour(){
+                  window.alert("Dire bonjour")
+              }
+          },
+          mounted() {
+          console.log("hello", this.message)
+          }
+        })
+    </script>
+
+    
+  <!-- 
   <h1>Mettre à jour mon profil</h1>
-  <!-- -->
+   
   <p>Mon identifiant : {{user.id}}</p>
   
   <form class="container" action="/update/{{user.id}}" method="POST">
@@ -34,5 +63,6 @@
       
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    -->
 </body>
 </html>
